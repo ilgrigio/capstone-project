@@ -1,0 +1,14 @@
+GET http://localhost:9099/dishes
+
+###
+POST http://localhost:9099/addDish
+Content-Type: application/json
+
+{
+    "name": "Tiger Roll",
+    "description": "roll con philadelfia, avocado, salmone",
+    "category": "primi",
+    "price": 5,
+    "addedIngredients": "no",
+    "photo": "Tiger Roll photo"
+}
