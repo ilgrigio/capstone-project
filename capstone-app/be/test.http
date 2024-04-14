@@ -12,3 +12,20 @@ Content-Type: application/json
     "addedIngredients": "no",
     "photo": "Tiger Roll photo"
 }
+
+###
+
+GET http://localhost:9099/users
+
+###
+
+POST http://localhost:9099/addUser
+Content-Type: application/json
+
+{
+ "firstName": "Orazio",
+ "lastName": "Chestrazio",
+    "password": "oraziochestrazio",
+    "email": "orazio45@hotmail.it",
+    "age": 65
+    }
