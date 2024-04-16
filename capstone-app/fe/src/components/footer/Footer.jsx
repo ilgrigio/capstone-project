@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className="footer bg-dark">
-      <h2>Koya sushi asian restaurant</h2>
+      <h2>Koya Sushi Asian Restaurant</h2>
       {/* <img src={logo} className="logo" /> */}
       <span>Per prenotazioni chiamare il numero: +39 011 19 23 44 25</span>
     </div>

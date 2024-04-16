@@ -1,18 +1,24 @@
 .hero {
-    filter: grayscale(10%);
+  filter: grayscale(10%);
 }
 
 .button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-inline: 3rem;
-    padding-block: 2rem;
-    background-color: #ff3b3b;
-    border: none;
-    font-size: large;
-    font-weight: bold;
-    box-shadow: black 1px 5px 10px
-   
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-inline: 3rem;
+  padding-block: 2rem;
+  background-image: linear-gradient(to bottom right, #ff9455 10%, #d8382a 100%);
+  border: none;
+  font-size: large;
+  font-weight: bold;
+  box-shadow: black 1px 5px 10px;
+}
+
+.button:hover {
+  background-image: linear-gradient(to bottom right, #212529 100%, #cfca64);
+  color: #cfca64;
+  font-weight: 900;
+  box-shadow: none;
 }

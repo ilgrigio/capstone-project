@@ -6,9 +6,11 @@ const Hero = () => {
   return (
     <>
       <div className="">
-        <img src={koyahero} className="hero" alt="hero image" />
+        <img src={koyahero} className="hero" alt="hero" />
         <div className="card-img-overlay card-text-center">
-          <button className="button btn btn-primary">Login</button>
+          <button type="submit" className="button btn btn-primary">
+            Click to order
+          </button>
         </div>
       </div>
     </>
