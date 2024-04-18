@@ -33,7 +33,6 @@ const LoginForm = () => {
           body: JSON.stringify(loginFormData),
         }
       );
-
       const data = await response.json();
       console.log(data.token);
       if (data.token) {
