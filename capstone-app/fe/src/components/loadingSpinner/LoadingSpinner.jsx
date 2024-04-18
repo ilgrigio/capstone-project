@@ -13,7 +13,12 @@ const LoadingSpinner = () => {
 
   return (
     <>
-      <PacmanLoader color="#d8382a" />
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: '100vh' }}
+      >
+        <PacmanLoader color="#fe3b18" size={20} />
+      </div>
     </>
   );
 };

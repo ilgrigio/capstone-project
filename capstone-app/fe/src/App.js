@@ -5,12 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import LoadingSpinner from './components/loadingSpinner/LoadingSpinner';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Login />} />
+        <Route path="/spinner" element={<LoadingSpinner />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

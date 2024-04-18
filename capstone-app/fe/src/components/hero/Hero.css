@@ -22,3 +22,8 @@
   font-weight: 900;
   box-shadow: none;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
