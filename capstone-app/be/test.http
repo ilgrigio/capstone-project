@@ -23,9 +23,13 @@ POST http://localhost:9099/addUser
 Content-Type: application/json
 
 {
- "firstName": "Orazio",
- "lastName": "Chestrazio",
-    "password": "oraziochestrazio",
-    "email": "orazio45@hotmail.it",
-    "age": 65
+ "firstName": "Paolino",
+ "lastName": "Paperino",
+    "password": "paolinopaperino",
+    "email": "paolino21@yahoo.it",
+    "age": 132
     }
+
+###
+
+DELETE http://localhost:9099/deleteUser/661c59af7d4e68c6351e6262

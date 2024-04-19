@@ -1,0 +1,31 @@
+/* .explore__menu {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.explore__menu h1 {
+  font-weight: 500;
+}
+
+.explore__menu__text {
+  max-width: 60%;
+  columns: #808080;
+} */
+
+/* .explore__menu__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: scroll;
+  gap: 30px;
+  margin: 20px 0;
+} */
+
+.category img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+}
