@@ -9,7 +9,7 @@ const SushiProducts = ({
   photo,
 }) => {
   return (
-    <div className="card">
+    <div className="card align-items-center p-2">
       <img src={photo} alt={name} />
       <h2>{name}</h2>
       <p>{description}</p>
