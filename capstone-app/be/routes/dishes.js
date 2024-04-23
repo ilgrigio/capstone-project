@@ -1,5 +1,6 @@
 const express = require('express');
 const dishModel = require('../models/dishes');
+const dishes = require('../models/dishes');
 const dishRoute = express.Router();
 
 // GET
@@ -27,6 +28,53 @@ dishRoute.get('/dishes', async (req, res) => {
     });
   }
 });
+
+// GET CATEGORY
+// ANTIPASTI
+dishRoute.get('/dishes/antipasti', async (req, res) => {
+  const antipasti = await dishModel.find({ category: 'antipasti' });
+  res.status(200).send({
+    statusCode: 200,
+    category: antipasti,
+  });
+});
+
+// PRIMI
+dishRoute.get('/dishes/primi', async (req, res) => {
+  const primi = await dishModel.find({ category: 'primi' });
+  res.status(200).send({
+    statusCode: 200,
+    category: primi,
+  });
+});
+
+// SECONDI
+dishRoute.get('/dishes/secondi', async (req, res) => {
+  const secondi = await dishModel.find({ category: 'secondi' });
+  res.status(200).send({
+    statusCode: 200,
+    category: secondi,
+  });
+});
+
+// DESSERT
+dishRoute.get('/dishes/dessert', async (req, res) => {
+  const dessert = await dishModel.find({ category: 'dessert' });
+  res.status(200).send({
+    statusCode: 200,
+    category: dessert,
+  });
+});
+
+// DRINK
+dishRoute.get('/dishes/drink', async (req, res) => {
+  const drink = await dishModel.find({ category: 'drink' });
+  res.status(200).send({
+    statusCode: 200,
+    category: drink,
+  });
+});
+/* ----- FINISH CATEGORY ----- */
 
 // POST
 dishRoute.post('/addDish', async (req, res) => {

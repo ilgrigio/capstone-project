@@ -12,48 +12,56 @@ import polipo from './insalata_polipo.png';
 import ravioli from './ravioli_cristallo.png';
 
 export const antipastiDishes = [
+  /**
+   * Paste one or more documents here
+   */
   {
-    // id: 1,
-    name: 'Ebi Kataifi',
-    description: 'gamberi avvolti dalla pasta kataifi fritta',
-    category: 'antipasti',
-    price: 6,
+    name: 'Tartar Mix',
+    description: 'tartar di pesci misti',
+    category: 'primi',
+    price: 10.0,
     addedIngredients: '',
-    photo: ebi,
+    photo: '',
+  },
+
+  {
+    name: 'Nigiri Mix',
+    description: '',
+    category: 'secondi',
+    price: 8.0,
+    addedIngredients: '',
+    photo: '',
   },
   {
-    // id: 2,
-    name: 'Edamame',
-    description: 'baccelli di soia',
-    category: 'antipasti',
-    price: 4,
+    name: 'Profiterole Nero',
+    description:
+      ' bignè riempito di crema pasticcera, crema chantilly, panna o gelato e ricoperto con una crema di cioccolato o di caramello',
+    category: 'dessert',
+    price: 3.5,
     addedIngredients: '',
-    photo: edamame,
+    photo: '',
   },
   {
-    // id: 3,
     name: 'Goma Wakame',
     description: 'alghe piccanti marinate con sesamo',
     category: 'antipasti',
-    price: 5,
+    price: 5.0,
     addedIngredients: '',
     photo: wakame,
   },
   {
-    // id: 4,
-    name: 'Insalata di Polipo',
-    description: 'insalata di polipo e rucola',
-    category: 'antipasti',
-    price: 8,
+    name: 'Asahi',
+    description: 'birra giapponese',
+    category: 'drink',
+    price: 3.5,
     addedIngredients: '',
-    photo: polipo,
+    photo: '',
   },
   {
-    // id: 5,
     name: 'Ravioli Cristallo',
     description: 'ravioli di gamberi',
     category: 'antipasti',
-    price: 4,
+    price: 4.0,
     addedIngredients: '',
     photo: ravioli,
   },

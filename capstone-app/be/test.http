@@ -1,17 +1,29 @@
 GET http://localhost:9099/dishes
 
 ###
+GET http://localhost:9099/dishes/antipasti
+
+###
 POST http://localhost:9099/addDish
 Content-Type: application/json
 
 {
-    "name": "Tiger Roll",
-    "description": "roll con philadelfia, avocado, salmone",
-    "category": "primi",
-    "price": 5,
-    "addedIngredients": "no",
-    "photo": "Tiger Roll photo"
-}
+    "name": "Edamame",
+    "description": "baccelli di soia",
+    "category": "antipasti",
+    "price": 4,
+    "addedIngredients": "",
+    "photo": "edamame.png"
+  }
+
+# {
+#     "name": "Tiger Roll",
+#     "description": "roll con philadelfia, avocado, salmone",
+#     "category": "primi",
+#     "price": 5,
+#     "addedIngredients": "no",
+#     "photo": "Tiger Roll photo"
+# }
 
 ###
 
