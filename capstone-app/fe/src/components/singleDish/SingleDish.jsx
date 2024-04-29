@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 const SushiProducts = ({
   id,
@@ -9,9 +10,20 @@ const SushiProducts = ({
   addedIngredients,
   photo,
   qty,
+  // selected, // prop per tenere traccia del prodotto selezionato
+  // setSelected, // prop per impostare il prodotto selezionato
 }) => {
+  const [selected, setSelected] = useState(null);
+  const handleProductClick = () => {
+    setSelected(prev => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
+  };
   return (
-    <div className="card align-items-center p-2">
+    <div
+      className={`card align-items-center p-2 ${
+        selected === name ? 'active' : ''
+      }`}
+      onClick={handleProductClick}
+    >
       <img src={photo} alt={name} />
       <p>{id}</p>
       <h2>{name}</h2>

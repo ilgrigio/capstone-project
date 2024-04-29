@@ -27,3 +27,22 @@ img {
   color: #fff;
   border: none;
 }
+
+.card {height: 100%!important;}
+
+.card.active {
+  cursor: pointer;
+  border: 5px solid #cfca64;
+  padding: 2px;
+  box-shadow: inset 1px 1px 3px 1px #000;
+}
+
+.quantity-controls {
+  display: none;
+}
+
+.quantity-controls:hover {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 5px;
+}

@@ -9,11 +9,15 @@ import LoadingSpinner from './components/loadingSpinner/LoadingSpinner';
 import Antipasti from './pages/Antipasti';
 import Primi from './pages/Primi';
 import Secondi from './pages/Secondi';
+import Desserts from './pages/Desserts';
+import Drinks from './pages/Drinks';
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/drink" element={<Drinks />} />
+        <Route path="/dessert" element={<Desserts />} />
         <Route path="/antipasti" element={<Antipasti />} />
         <Route path="/primi" element={<Primi />} />
         <Route path="/secondi" element={<Secondi />} />

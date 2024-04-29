@@ -10,12 +10,6 @@ p {
   transition: 0.2s;
 }
 
-.col .active {
-  cursor: pointer;
-  border: 3px solid #cfca64;
-  padding: 2px;
-}
-
 .btn {
   background-color: tomato;
   border: none;
