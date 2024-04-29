@@ -1,5 +1,6 @@
 .hero {
   filter: grayscale(10%);
+  margin-block-end: 2rem;
 }
 
 .button {

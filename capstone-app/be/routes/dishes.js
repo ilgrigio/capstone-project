@@ -1,6 +1,5 @@
 const express = require('express');
 const dishModel = require('../models/dishes');
-const dishes = require('../models/dishes');
 const dishRoute = express.Router();
 
 // GET

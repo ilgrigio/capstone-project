@@ -1,8 +1,16 @@
 import React from 'react';
 import './ExplorerMenu.css';
 import { menuList } from '../../assets/assets';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ExplorerMenu = ({ category, setCategory }) => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const handleLinkClick = () => {
+    setTimeout(() => {
+      // Effettua la navigazione qui
+    }, 10000); // Imposta il timeout a 3 secondi (3000 millisecondi)
+  };
   return (
     <div className="container-fluid">
       <div className="row">
@@ -11,17 +19,20 @@ const ExplorerMenu = ({ category, setCategory }) => {
         {menuList.map((item, idx) => {
           return (
             <div
-              onClick={() =>
-                setCategory((prev) => (prev === item.name ? 'All' : item.name))
-              }
+              onClick={() => {
+                setSelectedCategory(item.name);
+                setCategory(prev => (prev === item.name ? 'All' : item.name));
+              }}
               key={idx}
               className="col m-3"
             >
-              <img
-                className={category === item.name ? 'active' : ''}
-                src={item.photo}
-                alt={item.name}
-              />
+              <Link to={`/${item.name}`} onClick={handleLinkClick}>
+                <img
+                  className={selectedCategory === item.name ? 'active' : ''}
+                  src={item.photo}
+                  alt={item.name}
+                />
+              </Link>
               <p className="item__name">{item.name}</p>
             </div>
           );

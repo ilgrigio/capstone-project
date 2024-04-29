@@ -7,12 +7,16 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LoadingSpinner from './components/loadingSpinner/LoadingSpinner';
 import Antipasti from './pages/Antipasti';
+import Primi from './pages/Primi';
+import Secondi from './pages/Secondi';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/antipasti" element={<Antipasti />} />
+        <Route path="/primi" element={<Primi />} />
+        <Route path="/secondi" element={<Secondi />} />
         <Route path="/spinner" element={<LoadingSpinner />} />
         <Route exact path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />

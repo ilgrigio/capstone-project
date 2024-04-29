@@ -1,5 +1,5 @@
 import React from 'react';
-import Appetizer from '../antipasti/Appetizer';
+import Appetizer from '../components/antipasti/Appetizer';
 
 const Antipasti = () => {
   return (
