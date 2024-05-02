@@ -10,8 +10,6 @@ const SushiProducts = ({
   addedIngredients,
   photo,
   qty,
-  // selected, // prop per tenere traccia del prodotto selezionato
-  // setSelected, // prop per impostare il prodotto selezionato
 }) => {
   const [selected, setSelected] = useState(null);
   const handleProductClick = () => {
@@ -21,7 +19,7 @@ const SushiProducts = ({
     <div
       className={`card align-items-center p-2 ${
         selected === name ? 'active' : ''
-      }`}
+      } `}
       onClick={handleProductClick}
     >
       <img src={photo} alt={name} />
@@ -30,7 +28,7 @@ const SushiProducts = ({
       <p>{description}</p>
       {/* <p>Categoria: {category}</p> */}
       <p>Prezzo: {price}</p>
-      <p>qty:{qty}</p>
+      {/* <p>qty:{qty}</p> */}
       {/* <p>Ingredienti aggiuntivi: {addedIngredients}</p> */}
     </div>
   );

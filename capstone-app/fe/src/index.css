@@ -28,21 +28,33 @@ img {
   border: none;
 }
 
-.card {height: 100%!important;}
+.col {
+  gap: 10px;
+}
 
 .card.active {
   cursor: pointer;
   border: 5px solid #cfca64;
   padding: 2px;
-  box-shadow: inset 1px 1px 3px 1px #000;
+  /* box-shadow: inset 0px 0px 1px 1px rgb(0, 0, 0, 0.5); */
+  transition-duration: 300ms;
+  transform: scale(0.9)
 }
 
-.quantity-controls {
-  display: none;
-}
+  .quantity-controls {
+    display: none;
+    margin-block: 5px;
+    width: 100%;
+    color: #fff;
+    transition: display 2s ease;
+  }
+  
+  .sushi-card:hover .quantity-controls,
+  .sushi-card:active .quantity-controls {
+    display: block; /* Display the buttons on hover or focus */
+    transition: display 2s ease;
+  }
 
-.quantity-controls:hover {
-  display: flex;
-  justify-content: space-between;
-  margin-block-start: 5px;
+.quantity-controls button {
+  margin-inline: 3px;
 }

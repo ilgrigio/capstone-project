@@ -1,13 +1,12 @@
+
+h1,p {
+  color: #fff;
+}
 .container-fluid {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-h1,
-p {
-  color: #fff;
 }
 
 .col img {
@@ -16,16 +15,33 @@ p {
   object-fit: cover;
   border-radius: 100%;
   border: 3px solid #fff;
-  transition: 0.2s;
 }
-
-/* .col img:hover {
-  cursor: pointer;
-  border: 3px solid #cfca64;
-} */
 
 .col .item__name {
   text-transform: capitalize;
   font-size: max(1.4vw, 16px);
   margin-top: 10px;
+}
+
+.card {
+  height: 440px;
+}
+
+.card h2, p {
+  color: #212529;
+}
+
+.explore__menu__text {
+  color: #fff;
+}
+
+.item__name {
+  color: #fff;
+}
+
+.category img:hover {
+  cursor: pointer;
+  border: 5px solid #cfca64;
+  transition-duration: 300ms;
+  transform: scale(0.9)
 }

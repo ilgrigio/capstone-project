@@ -33,8 +33,7 @@ const FirstDishes = () => {
     <>
       <Navbar countCartItems={cart.length} />
       <div className="container-fluid">
-        <div className="row g-3">
-          <h1>Guarda il nostro Menu</h1>
+        <div className="row gy-4">
           {firstDishes.map((item, idx) => {
             return (
               <div key={idx} className="col col-md-3 col-sm-6">

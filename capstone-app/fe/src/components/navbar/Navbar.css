@@ -1,4 +1,15 @@
+nav.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
 .container-fluid {
-    padding-inline: 3rem;
-    /* margin-inline: 1rem; */
+    padding-inline: 2rem;
+}
+
+.navbar {
+    padding-inline: 2rem;
 }

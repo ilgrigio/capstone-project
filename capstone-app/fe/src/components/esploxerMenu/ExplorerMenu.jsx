@@ -6,15 +6,17 @@ import { useState } from 'react';
 
 const ExplorerMenu = ({ category, setCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   const handleLinkClick = () => {
     setTimeout(() => {
       // Effettua la navigazione qui
     }, 10000); // Imposta il timeout a 3 secondi (3000 millisecondi)
   };
+
   return (
     <div className="container-fluid">
       <div className="row">
-        <h1>Guarda il nostro Menu</h1>
+        <h1 className="">Guarda il nostro Menu</h1>
         <p className="explore__menu__text">Scegli cosa ti piace!</p>
         {menuList.map((item, idx) => {
           return (
@@ -24,7 +26,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
                 setCategory(prev => (prev === item.name ? 'All' : item.name));
               }}
               key={idx}
-              className="col m-3"
+              className="category col m-3"
             >
               <Link to={`/${item.name}`} onClick={handleLinkClick}>
                 <img
