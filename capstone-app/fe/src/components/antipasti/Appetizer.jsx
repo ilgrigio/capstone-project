@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './Appetizer.css';
 import SushiProducts from '../singleDish/SingleDish';
-// import Navbar from '../navbar/Navbar';
 import Main from '../main/Main';
-import Navbar from '../navbar/Navbar';
 
 const Appetizer = () => {
   const [antipastiDishes, setAntipastiDishes] = useState([]);
@@ -13,12 +10,12 @@ const Appetizer = () => {
   const onAdd = (item, _id) => {
     console.log(`il piatto ${item.name} è stato aggiunto`, item._id);
     // Controlla se il piatto è già nel carrello
-    const cartItem = cart.find((item) => item._id === _id);
+    const cartItem = cart.find(item => item._id === _id);
     // !cartItem
     //   ? console.log('non trovato!')
     //   : console.log('il piatto', cartItem);
     if (cartItem) {
-      const newCart = cart.map((item) => {
+      const newCart = cart.map(item => {
         if (item._id === _id) {
           const updateItem = { ...item, qty: cart.qty + 1 };
           console.log('cart qty', updateItem.qty);
@@ -30,7 +27,7 @@ const Appetizer = () => {
       setCart(newCart);
     } else {
       const newItem = { ...item, qty: 1 };
-      setCart((prevCart) => {
+      setCart(prevCart => {
         const updatedCart = [...prevCart, newItem];
         // setCart([...cart, newItem]);
         console.log('Numero piatti', updatedCart);
@@ -41,11 +38,11 @@ const Appetizer = () => {
 
   const onRemove = (item, _id) => {
     const newItem = { ...item, qty: 1 };
-    const cartItem = cart.find((item) => {
+    const cartItem = cart.find(item => {
       return item._id === _id;
     });
     if (newItem) {
-      const newCart = cart.map((item) => {
+      const newCart = cart.map(item => {
         if (item._id === _id) {
           return { ...item, qty: cartItem.qty - 1 };
         } else {
@@ -58,16 +55,6 @@ const Appetizer = () => {
         setCart([]);
       }
     }
-    // const exist = cartItems.find(x => x._id === item._id);
-    // if (exist.qty === 1) {
-    //   const newCartItems = cartItems.filter(x => x._id !== item._id);
-    //   setCartItems(newCartItems);
-    // } else {
-    //   const newCartItems = cartItems.map(x =>
-    //     x._id === item._id ? { ...exist, qty: exist.qty - 1 } : x
-    //   );
-    //   setCartItems(newCartItems);
-    // }
   };
 
   // console.log('Errore', dishError);
@@ -108,14 +95,14 @@ const Appetizer = () => {
                   qty={item.qty}
                   // countCartItems={item.amount}
                 />
-                <div className="quantity-controls py-1">
+                {/* <div className="quantity-controls py-1">
                   <button onClick={() => onRemove(item._id)} className="btn">
                     -
                   </button>
                   <button onClick={() => onAdd(item)} className="btn">
                     +
                   </button>
-                </div>
+                </div> */}
               </div>
             );
           })}
@@ -123,18 +110,6 @@ const Appetizer = () => {
       </div>
     </>
   );
-  {
-    /* <button onClick={() => onAdd(item)} className="btn">
-                  Aggiungi al carrello
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div> */
-  }
-  //     </>
-  //   );
 };
 
 export default Appetizer;

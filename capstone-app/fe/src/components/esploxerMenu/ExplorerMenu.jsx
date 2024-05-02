@@ -15,7 +15,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row rounded-4 bg-danger pt-3">
         <h1 className="">Guarda il nostro Menu</h1>
         <p className="explore__menu__text">Scegli cosa ti piace!</p>
         {menuList.map((item, idx) => {

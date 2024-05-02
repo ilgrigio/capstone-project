@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import ButtonFunctions from '../buttonFunctions/ButtonFunctions';
+
 const SushiProducts = ({
   id,
   name,
@@ -8,19 +9,20 @@ const SushiProducts = ({
   price,
   addedIngredients,
   photo,
-  // qty,
+  qty,
 }) => {
-  const [selected, setSelected] = useState(null);
+  // const [selected, setSelected] = useState(null);
   const { onAdd, onRemove } = ButtonFunctions(); // Chiamata a ButtonFunction
-  const handleProductClick = () => {
-    setSelected((prev) => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
-  };
+  // const handleProductClick = () => {
+  //   setSelected(prev => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
+  // };
   return (
     <div
-      className={`card align-items-center p-2 ${
-        selected === name ? 'active' : ''
-      } `}
-      onClick={handleProductClick}
+      className={'card align-items-center p-2'}
+      // className={`card align-items-center p-2 ${
+      //   selected === name ? 'active' : ''
+      // } `}
+      // onClick={handleProductClick}
     >
       <img src={photo} alt={name} />
       <p>{id}</p>
@@ -28,12 +30,15 @@ const SushiProducts = ({
       <p>{description}</p>
       {/* <p>Categoria: {category}</p> */}
       <p>Prezzo: {price}</p>
-      <button onClick={() => onAdd(id)} className="btn">
-        +
-      </button>
-      <button onClick={() => onRemove(id)} className="btn">
-        -
-      </button>
+      <p>Qty:{qty}</p>
+      <div className="d-flex gap-3">
+        <button onClick={() => onRemove(id)} className="btn tomato">
+          -
+        </button>
+        <button onClick={() => onAdd(id)} className="btn tomato">
+          +
+        </button>
+      </div>
     </div>
   );
 };

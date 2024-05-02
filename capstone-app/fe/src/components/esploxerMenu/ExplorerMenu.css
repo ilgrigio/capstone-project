@@ -23,14 +23,6 @@ h1,p {
   margin-top: 10px;
 }
 
-.card {
-  height: 440px;
-}
-
-.card h2, p {
-  color: #212529;
-}
-
 .explore__menu__text {
   color: #fff;
 }
@@ -44,4 +36,8 @@ h1,p {
   border: 5px solid #cfca64;
   transition-duration: 300ms;
   transform: scale(0.9)
+}
+
+.bg-danger {
+ background-color: tomato!important
 }

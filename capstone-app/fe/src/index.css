@@ -32,11 +32,25 @@ img {
   gap: 10px;
 }
 
+.card {
+  height: fit-content;
+}
+
+.card h2, p {
+  color: #212529;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  /* transition: 0.2s; */
+}
+
 .card.active {
   cursor: pointer;
   border: 5px solid #cfca64;
   padding: 2px;
-  /* box-shadow: inset 0px 0px 1px 1px rgb(0, 0, 0, 0.5); */
   transition-duration: 300ms;
   transform: scale(0.9);
 }
@@ -59,12 +73,12 @@ img {
   margin-inline: 3px;
 }
 
-.btn button {
+.btn.tomato {
   background-color: tomato;
   border: none;
   color: #fff;
 }
 
-.btn:hover {
+.btn.tomato:hover {
   background-color: #cfca64;
 }

@@ -1,14 +1,11 @@
 import React from 'react';
 import SushiProducts from '../singleDish/SingleDish';
-import Navbar from '../navbar/Navbar';
+import Main from '../main/Main';
 import { useState, useEffect } from 'react';
 
 const Dolci = () => {
   const [dessert, setDessert] = useState([]);
   const [cart, setCart] = useState([]);
-
-  const onAdd = () => {};
-  const onRemove = () => {};
 
   const fetchDishes = async () => {
     try {
@@ -31,7 +28,7 @@ const Dolci = () => {
 
   return (
     <>
-      <Navbar countCartItems={cart.length} />
+      <Main countCartItems={cart.length} />
       <div className="container-fluid">
         <div className="row gy-4">
           {dessert.map((item, idx) => {
@@ -46,18 +43,12 @@ const Dolci = () => {
                   qty={item.qty}
                   // countCartItems={item.amount}
                 />
-                <div className="quantity-controls">
-                  <button onClick={() => onRemove(item)} className="btn">
-                    -
-                  </button>
-                  <button onClick={() => onAdd(item)} className="btn">
-                    +
-                  </button>
-                </div>
               </div>
             );
           })}
         </div>
+        {/* );
+      })} */}
       </div>
     </>
   );
