@@ -2,20 +2,13 @@ import { useState } from 'react';
 import React from 'react';
 import './Sidecart.css';
 
-const Sidecart = ({ handleToggle }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSidecart = () => {
-    setIsOpen(!isOpen);
-    handleToggle();
-  };
-
+const Sidecart = ({ isOpen, toggleSidecart }) => {
   return (
     <div
-      className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}
+      className={`sidebar ${isOpen ? 'sidebar--open' : 'hide'}`}
       onClick={toggleSidecart}
     >
-      {isOpen ? 'Sidecart' : 'Close sidecart'}
+      {isOpen ? 'Sidecart' : 'Close'}
     </div>
   );
 };

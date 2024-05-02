@@ -1,13 +1,11 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import Sidecart from '../cart/Sidecart';
 
-const Navbar = ({ countCartItems, handleToggle }) => {
+const Navbar = ({ countCartItems, toggleSidecart }) => {
   // console.log('count', countCartItems);
   return (
     <>
-      <Sidecart />
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <span className="navbar-brand mb-0 h1">Sushi Restaurant</span>
@@ -15,7 +13,7 @@ const Navbar = ({ countCartItems, handleToggle }) => {
             <Link to={'/home'} style={{ color: 'white' }}>
               Home
             </Link>
-            <Link to={'#'} onClick={handleToggle} style={{ color: 'white' }}>
+            <Link to={'#'} onClick={toggleSidecart} style={{ color: 'white' }}>
               Cart
               {countCartItems ? (
                 <button className="badge">{countCartItems}</button>

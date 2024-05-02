@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-
+import { React, useState } from 'react';
+import ButtonFunctions from '../buttonFunctions/ButtonFunctions';
 const SushiProducts = ({
   id,
   name,
@@ -9,11 +8,12 @@ const SushiProducts = ({
   price,
   addedIngredients,
   photo,
-  qty,
+  // qty,
 }) => {
   const [selected, setSelected] = useState(null);
+  const { onAdd, onRemove } = ButtonFunctions(); // Chiamata a ButtonFunction
   const handleProductClick = () => {
-    setSelected(prev => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
+    setSelected((prev) => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
   };
   return (
     <div
@@ -28,8 +28,12 @@ const SushiProducts = ({
       <p>{description}</p>
       {/* <p>Categoria: {category}</p> */}
       <p>Prezzo: {price}</p>
-      {/* <p>qty:{qty}</p> */}
-      {/* <p>Ingredienti aggiuntivi: {addedIngredients}</p> */}
+      <button onClick={() => onAdd(id)} className="btn">
+        +
+      </button>
+      <button onClick={() => onRemove(id)} className="btn">
+        -
+      </button>
     </div>
   );
 };
