@@ -28,14 +28,13 @@ const SushiProducts = ({
       <p>{id}</p>
       <h2>{name}</h2>
       <p>{description}</p>
-      {/* <p>Categoria: {category}</p> */}
       <p>Prezzo: {price}</p>
       <p>Qty:{qty}</p>
       <div className="d-flex gap-3">
-        <button onClick={() => onRemove(id)} className="btn tomato">
+        <button onClick={() => onRemove({ id, name })} className="btn tomato">
           -
         </button>
-        <button onClick={() => onAdd(id)} className="btn tomato">
+        <button onClick={() => onAdd({ id, name })} className="btn tomato">
           +
         </button>
       </div>
