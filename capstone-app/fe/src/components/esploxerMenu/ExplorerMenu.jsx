@@ -35,7 +35,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
                   alt={item.name}
                 />
               </Link>
-              <p className="item__name">{item.name}</p>
+              <p className="item__name small">{item.name}</p>
             </div>
           );
         })}

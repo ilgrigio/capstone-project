@@ -4,6 +4,7 @@ import Main from '../main/Main';
 
 const Appetizer = () => {
   const [antipastiDishes, setAntipastiDishes] = useState([]);
+  const [cart, setCart] = useState([]);
   // const [dishError, setDishError] = useState(null);
   // console.log('Errore', dishError);
   const fetchDishes = async () => {
@@ -28,6 +29,7 @@ const Appetizer = () => {
 
   return (
     <>
+      <Main countCartItems={cart.length} />
       <div className="container-fluid">
         <div className="row gy-3">
           {antipastiDishes.map((item, idx) => {

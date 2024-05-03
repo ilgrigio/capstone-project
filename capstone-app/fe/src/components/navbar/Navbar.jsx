@@ -1,9 +1,10 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { FaCartShopping } from 'react-icons/fa6';
 
 const Navbar = ({ countCartItems, toggleSidecart }) => {
-  // console.log('count', countCartItems);
+  console.log(countCartItems);
   return (
     <>
       <nav className="navbar navbar-dark bg-dark">
@@ -14,7 +15,7 @@ const Navbar = ({ countCartItems, toggleSidecart }) => {
               Home
             </Link>
             <Link to={'#'} onClick={toggleSidecart} style={{ color: 'white' }}>
-              Cart
+              <FaCartShopping size={25} color="#fff" />
               {countCartItems ? (
                 <button className="badge">{countCartItems}</button>
               ) : (

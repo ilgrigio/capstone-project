@@ -6,10 +6,11 @@ import ButtonFunctions from '../buttonFunctions/ButtonFunctions.js';
 const Main = ({ cartCountItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
-
-  const updateCartCount = (newCount) => {
-    setCartCount(newCount);
-  };
+  const [cart, setCart] = useState([]);
+  console.log(cartCountItems);
+  // const updateCartCount = newCount => {
+  //   setCartCount(newCount);
+  // };
 
   const toggleSidecart = () => {
     setIsOpen(!isOpen);
@@ -17,9 +18,17 @@ const Main = ({ cartCountItems }) => {
 
   return (
     <>
-      <Navbar countCartItems={cartCountItems} toggleSidecart={toggleSidecart} />
+      <Navbar
+        countCartItems={cartCountItems}
+        toggleSidecart={toggleSidecart}
+        cartCount={cartCount}
+      />
       <Sidecart isOpen={isOpen} toggleSidecart={toggleSidecart} />
-      <ButtonFunctions updateCartCount={updateCartCount} />
+      {/* <ButtonFunctions
+        cart={cart}
+        updateCartCount={updateCartCount}
+        countCartItems={cartCountItems}
+      /> */}
     </>
   );
 };
