@@ -7,6 +7,7 @@ const Sidecart = ({ isOpen, toggleSidecart }) => {
       className={`sidebar ${isOpen ? 'sidebar--open' : 'hide'}`}
       onClick={toggleSidecart}
     >
+      <h2>Il tuo Carrello</h2>
       {isOpen ? 'Sidecart' : 'Close'}
     </div>
   );

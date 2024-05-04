@@ -5,8 +5,7 @@ import Main from '../main/Main';
 const Appetizer = () => {
   const [antipastiDishes, setAntipastiDishes] = useState([]);
   const [cart, setCart] = useState([]);
-  // const [dishError, setDishError] = useState(null);
-  // console.log('Errore', dishError);
+
   const fetchDishes = async () => {
     try {
       const response = await fetch(
@@ -19,7 +18,6 @@ const Appetizer = () => {
       setAntipastiDishes(dishes.category);
     } catch (error) {
       console.error(error.message);
-      // setDishError(error);
     }
   };
 
@@ -42,7 +40,6 @@ const Appetizer = () => {
                   price={item.price.$numberDecimal}
                   photo={item.photo}
                   qty={item.qty}
-                  // countCartItems={item.amount}
                 />
               </div>
             );

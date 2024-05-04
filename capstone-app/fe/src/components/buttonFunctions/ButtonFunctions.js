@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 
 const ButtonFunctions = () => {
   const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    console.log('Nuova lunghezza del carrello:', cart.length);
-  }, [cart]);
+  const [countCartItems, setCountCartItems] = useState(1);
 
   const onAdd = (item, _id) => {
     const { id, name } = item;
@@ -25,17 +22,18 @@ const ButtonFunctions = () => {
         }
       });
       setCart(newCart);
+      // Calcola la quantità totale degli elementi nel carrello
+      const totalItems = newCart.reduce((total, item) => total + item.qty, 0);
+      setCountCartItems(totalItems);
+      console.log('countCarrello', countCartItems);
     } else {
       const newItem = { ...item, qty: 1 };
       setCart([...cart, newItem]);
-      //  setCart(prevCart => {
-      //   const updatedCart = [...prevCart, newItem];
-      //   console.log('Numero piatti', updatedCart.length);
-
-      //   return updatedCart;
-      // });
+      // Calcola la quantità totale degli elementi nel carrello
+      const totalItems =
+        cart.reduce((total, item) => total + item.qty, 0) + newItem.qty;
+      setCountCartItems(totalItems);
     }
-    // console.log('Nuova lunghezza del carrello:', cart.length);
   };
 
   const onRemove = (item, _id) => {
@@ -60,7 +58,6 @@ const ButtonFunctions = () => {
       setCart(newCart);
     }
   };
-
   return { onAdd, onRemove };
 };
 export default ButtonFunctions;

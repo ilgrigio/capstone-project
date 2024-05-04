@@ -15,6 +15,7 @@ const Navbar = ({ countCartItems, toggleSidecart }) => {
             </Link>
             <Link to={'#'} onClick={toggleSidecart} style={{ color: 'white' }}>
               <FaCartShopping size={25} color="#fff" />
+
               {countCartItems > 0 && (
                 <button className="badge">{countCartItems}</button>
 
