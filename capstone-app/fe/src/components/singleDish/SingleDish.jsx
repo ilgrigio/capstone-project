@@ -19,6 +19,7 @@ const SushiProducts = ({
   return (
     <div
       className={'card align-items-center p-2'}
+      style={{ minHeight: '100%' }}
       // className={`card align-items-center p-2 ${
       //   selected === name ? 'active' : ''
       // } `}

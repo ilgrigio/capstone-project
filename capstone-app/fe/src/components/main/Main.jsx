@@ -3,14 +3,13 @@ import Navbar from '../navbar/Navbar.jsx';
 import Sidecart from '../cart/Sidecart.jsx';
 import ButtonFunctions from '../buttonFunctions/ButtonFunctions.js';
 
-const Main = ({ cartCountItems }) => {
+const Main = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cart, setCart] = useState([]);
-  console.log(cartCountItems);
-  // const updateCartCount = newCount => {
-  //   setCartCount(newCount);
-  // };
+  const [cartCountItems, setCartCountItems] = useState(0);
+
+  console.log('cartCountItems', cartCountItems);
 
   const toggleSidecart = () => {
     setIsOpen(!isOpen);
@@ -21,14 +20,10 @@ const Main = ({ cartCountItems }) => {
       <Navbar
         countCartItems={cartCountItems}
         toggleSidecart={toggleSidecart}
+        ButtonFunctions={ButtonFunctions}
         cartCount={cartCount}
       />
       <Sidecart isOpen={isOpen} toggleSidecart={toggleSidecart} />
-      {/* <ButtonFunctions
-        cart={cart}
-        updateCartCount={updateCartCount}
-        countCartItems={cartCountItems}
-      /> */}
     </>
   );
 };

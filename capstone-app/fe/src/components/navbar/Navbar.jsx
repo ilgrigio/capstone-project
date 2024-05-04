@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { FaCartShopping } from 'react-icons/fa6';
 
 const Navbar = ({ countCartItems, toggleSidecart }) => {
-  console.log(countCartItems);
   return (
     <>
       <nav className="navbar navbar-dark bg-dark">
@@ -16,10 +15,11 @@ const Navbar = ({ countCartItems, toggleSidecart }) => {
             </Link>
             <Link to={'#'} onClick={toggleSidecart} style={{ color: 'white' }}>
               <FaCartShopping size={25} color="#fff" />
-              {countCartItems ? (
+              {countCartItems > 0 && (
                 <button className="badge">{countCartItems}</button>
-              ) : (
-                ''
+
+                // ) : (
+                //   ''
               )}
             </Link>
           </div>
