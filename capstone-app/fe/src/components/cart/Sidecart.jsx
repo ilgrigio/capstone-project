@@ -1,7 +1,11 @@
 import React from 'react';
 import './Sidecart.css';
+import { useCart } from '../../context/CartContext';
 
-const Sidecart = ({ isOpen, toggleSidecart }) => {
+const Sidecart = () => {
+  const { isOpen, toggleSidecart } = useCart();
+
+  // console.log('Sidebar open', isOpen);
   return (
     <div
       className={`sidebar ${isOpen ? 'sidebar--open' : 'hide'}`}

@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onChangeInput = (e) => {
+  const onChangeInput = e => {
     const { name, value } = e.target;
     setLoginFormData({
       ...loginFormData,
@@ -18,7 +18,7 @@ const LoginForm = () => {
   console.log(loginFormData);
 
   // Submit event
-  const onSubmit = async (e) => {
+  const onSubmit = async e => {
     e.preventDefault();
     setLoading(true);
 
@@ -58,57 +58,61 @@ const LoginForm = () => {
         <LoadingSpinner />
       ) : (
         <div className="container">
-          <form onSubmit={onSubmit} className="card-body cardbody-color p-lg-5">
-            <div className="text-center">
-              <img
-                src="https://picsum.photos/340/340"
-                className="login img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
-                width="200px"
-                alt="profile"
-              />
-            </div>
+          <div className="row justify-content-center g-1">
+            <div className="col-md-4">
+              <form onSubmit={onSubmit} className="card-body cardbody-color">
+                <div className="text-center">
+                  <img
+                    src="https://picsum.photos/340/340"
+                    className="login img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    width="200px"
+                    alt="profile"
+                  />
+                </div>
 
-            <div className="mb-3">
-              <input
-                onChange={onChangeInput}
-                type="email"
-                className="form-control"
-                name="email"
-                aria-describedby="emailHelp"
-                placeholder="Inserisci la tua email..."
-              />
-            </div>
+                <div className="mb-3">
+                  <input
+                    onChange={onChangeInput}
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Inserisci la tua email..."
+                  />
+                </div>
 
-            <div className="mb-3">
-              <input
-                onChange={onChangeInput}
-                type="password"
-                className="form-control"
-                name="password"
-                placeholder="Inserisci la tua password"
-              />
-            </div>
+                <div className="mb-3">
+                  <input
+                    onChange={onChangeInput}
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    placeholder="Inserisci la tua password"
+                  />
+                </div>
 
-            <div className="text-center">
-              <button
-                type="submit"
-                className="btn__send btn btn-primary mb-3 w-25"
-              >
-                Login
-              </button>
-            </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="btn__send btn btn-primary mb-3"
+                  >
+                    Login
+                  </button>
+                </div>
 
-            <div
-              onClick={onSignupClick}
-              id="help__login"
-              className="form-text text-center mb-5 text-light"
-            >
-              Non sei registrato?
-              <a href="#" className="text-light fw-bold ms-2">
-                Registrati ora!
-              </a>
+                <div
+                  onClick={onSignupClick}
+                  id="help__login"
+                  className="form-text text-center mb-5 text-light"
+                >
+                  Non sei registrato?
+                  <a href="#" className="text-light fw-bold ms-2">
+                    Registrati ora!
+                  </a>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       )}
     </>

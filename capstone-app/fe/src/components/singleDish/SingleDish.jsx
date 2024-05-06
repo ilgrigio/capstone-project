@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-import ButtonFunctions from '../buttonFunctions/ButtonFunctions';
+import { React } from 'react';
+import { useCart } from '../../context/CartContext';
 
 const SushiProducts = ({
   id,
@@ -9,13 +9,29 @@ const SushiProducts = ({
   price,
   addedIngredients,
   photo,
-  qty,
+  product,
 }) => {
+  const { addToCart, removeFromCart } = useCart();
+  const handleAdd = product => {
+    if (!product || !product.qty) {
+      product = { ...product, qty: 1 };
+    }
+    addToCart(product);
+    console.log(`hai aggiunto:, ${name}`);
+  };
+
+  const handleRemove = productId => {
+    removeFromCart(productId);
+    console.log(`hai rimosso:${name}`);
+  };
+  // const handleAdd = product => {
+  //   addToCart(product);
+  // };
   // const [selected, setSelected] = useState(null);
-  const { onAdd, onRemove } = ButtonFunctions(); // Chiamata a ButtonFunction
   // const handleProductClick = () => {
   //   setSelected(prev => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
   // };
+
   return (
     <div
       className={'card align-items-center p-2'}
@@ -30,12 +46,12 @@ const SushiProducts = ({
       <h2>{name}</h2>
       <p>{description}</p>
       <p>Prezzo: {price}</p>
-      <p>Qty:{qty}</p>
       <div className="d-flex gap-3">
-        <button onClick={() => onRemove({ id, name })} className="btn tomato">
+        {/* onClick={() => onRemove({ id, name })} */}
+        <button onClick={() => handleRemove(product)} className="btn tomato">
           -
         </button>
-        <button onClick={() => onAdd({ id, name })} className="btn tomato">
+        <button onClick={() => handleAdd(product)} className="btn tomato">
           +
         </button>
       </div>

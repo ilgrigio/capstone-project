@@ -1,4 +1,5 @@
 import React from 'react';
+import { CartProvider } from './context/CartContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,18 +17,20 @@ import Drinks from './pages/Drinks';
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/drink" element={<Drinks />} />
-        <Route path="/dessert" element={<Desserts />} />
-        <Route path="/antipasti" element={<Antipasti />} />
-        <Route path="/primi" element={<Primi />} />
-        <Route path="/secondi" element={<Secondi />} />
-        <Route path="/spinner" element={<LoadingSpinner />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="*" element={<Errorpage />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
+      <CartProvider>
+        <Routes>
+          <Route path="/drink" element={<Drinks />} />
+          <Route path="/dessert" element={<Desserts />} />
+          <Route path="/antipasti" element={<Antipasti />} />
+          <Route path="/primi" element={<Primi />} />
+          <Route path="/secondi" element={<Secondi />} />
+          <Route path="/spinner" element={<LoadingSpinner />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<Errorpage />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </CartProvider>
     </Router>
   );
 };

@@ -30,7 +30,7 @@
 
 .category img:hover {
   cursor: pointer;
-  border: 5px solid #cfca64;
+  border: 5px solid #C2CA69;
   transition-duration: 300ms;
   transform: scale(0.9)
 }

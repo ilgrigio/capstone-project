@@ -8,8 +8,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding-inline: 3rem;
-  padding-block: 2rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
   background-image: linear-gradient(to bottom right, #ff9455 10%, #d8382a 100%);
   border: none;
   font-size: large;
@@ -18,8 +18,8 @@
 }
 
 .button:hover {
-  background-image: linear-gradient(to bottom right, #212529 100%, #cfca64);
-  color: #cfca64;
+  background-image: linear-gradient(to bottom right, #212529 100%, #C2CA69);
+  color: #C2CA69;
   font-weight: 900;
   box-shadow: none;
 }
