@@ -17,15 +17,15 @@ export const CartProvider = ({ children }) => {
   };
 
   // Add item to cart
-  const addToCart = product => {
-    console.log('addToCart: product =', product);
+  const addToCart = productId => {
+    console.log('addToCart: product =', productId);
     console.log('cartItems =', cartItems);
     const existingItemIndex = cartItems.findIndex(
-      item => item.id === product.id
+      item => item.id === productId
     );
     // const newProduct = { ...product, qty: product.qty || 1 };
     // product.qty = product.qty || 1;
-    console.log('qty', product.qty);
+    console.log('qty', productId.qty);
 
     if (existingItemIndex !== -1) {
       const updatedItems = [...cartItems];
@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
       setCartItems(updatedItems);
     } else {
       // setCartItems([...cartItems, newProduct]);
-      setCartItems([...cartItems, product]);
+      setCartItems([...cartItems, productId]);
     }
   };
 
