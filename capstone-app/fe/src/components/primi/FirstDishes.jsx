@@ -35,6 +35,7 @@ const FirstDishes = () => {
             return (
               <div key={idx} className="col col-md-3 col-sm-6">
                 <SushiProducts
+                  data={item}
                   id={item._id}
                   name={item.name}
                   description={item.description}
@@ -43,14 +44,6 @@ const FirstDishes = () => {
                   qty={item.qty}
                   // countCartItems={item.amount}
                 />
-                {/* <div className="quantity-controls">
-                  <button onClick={() => onRemove(item)} className="btn">
-                    -
-                  </button>
-                  <button onClick={() => onAdd(item)} className="btn">
-                    +
-                  </button>
-                </div> */}
               </div>
             );
           })}

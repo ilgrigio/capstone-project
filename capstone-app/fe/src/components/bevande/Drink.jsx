@@ -7,9 +7,6 @@ const Drink = () => {
   const [drink, setDrink] = useState([]);
   const [cart, setCart] = useState([]);
 
-  const onAdd = () => {};
-  const onRemove = () => {};
-
   const fetchDishes = async () => {
     try {
       const response = await fetch(
@@ -39,25 +36,14 @@ const Drink = () => {
             return (
               <div key={idx} className="col col-md-3 col-sm-6">
                 <SushiProducts
+                  data={item}
                   id={item._id}
                   name={item.name}
                   description={item.description}
                   price={item.price.$numberDecimal}
                   photo={item.photo}
                   qty={item.qty}
-                  // countCartItems={item.amount}
                 />
-                <div className="quantity-controls">
-                  <button onClick={() => onRemove(item)} className="btn">
-                    -
-                  </button>
-
-                  <button className="btn">Aggiungi</button>
-
-                  <button onClick={() => onAdd(item)} className="btn">
-                    +
-                  </button>
-                </div>
               </div>
             );
           })}

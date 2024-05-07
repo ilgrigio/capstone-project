@@ -35,20 +35,18 @@ const Dolci = () => {
             return (
               <div key={idx} className="col col-md-3 col-sm-6">
                 <SushiProducts
+                  data={item}
                   id={item._id}
                   name={item.name}
                   description={item.description}
                   price={item.price.$numberDecimal}
                   photo={item.photo}
                   qty={item.qty}
-                  // countCartItems={item.amount}
                 />
               </div>
             );
           })}
         </div>
-        {/* );
-      })} */}
       </div>
     </>
   );
