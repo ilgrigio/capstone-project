@@ -6,7 +6,7 @@ import { useCart } from '../../context/CartContext';
 import logo from '../../assets/logo.png';
 
 const Navbar = () => {
-  const { cartItems, toggleSidecart } = useCart();
+  const { cart, toggleSidecart } = useCart();
   const handleCartClick = () => {
     toggleSidecart();
   };
@@ -30,9 +30,9 @@ const Navbar = () => {
             >
               <FaCartShopping size={25} color="inherit" />
 
-              {cartItems.length > 0 && (
-                <button className="badge">{cartItems.length}</button>
-              )}
+              {/* {cartItems.length > 0 && ( */}
+              <button className="badge">{cart?.length}</button>
+              {/* )} */}
             </Link>
           </div>
         </div>

@@ -10,23 +10,78 @@ const SushiProducts = ({
   addedIngredients,
   photo,
   product,
+  data,
 }) => {
-  const { addToCart, removeFromCart } = useCart();
-  const handleAdd = product => {
-    if (!product || !product.qty) {
-      product = { ...product, qty: 1 };
+  // console.log('Nomi Piatti:', data.name);
+  // const { addToCart, removeFromCart } = useCart();
+  const { cart, setCart } = useCart();
+  const addToCart = () => {
+    console.log('hai aggiunto:', data.name, id);
+    if (Array.isArray(cart)) {
+      setCart([...cart, data]);
+    } else {
+      setCart([data]);
     }
-    addToCart(product);
-    console.log(`hai aggiunto:, ${name}`);
   };
 
-  const handleRemove = productId => {
-    removeFromCart(productId);
-    console.log(`hai rimosso:${name}`);
+  const removeFromCart = () => {
+    const updatedCart = [...cart]; // Crea una copia del carrello
+    const productToRemove = updatedCart.find(item => item.id === data.id);
+
+    if (productToRemove) {
+      // Se il prodotto è presente nel carrello
+      if (productToRemove.quantity > 1) {
+        // Se la quantità è maggiore di 1, sottrai 1
+        productToRemove.quantity -= 1;
+      } else {
+        // Altrimenti, rimuovi completamente il prodotto
+        const index = updatedCart.indexOf(productToRemove);
+        updatedCart.splice(index, 1);
+      }
+
+      setCart(updatedCart);
+      console.log('Prodotto rimosso:', productToRemove.name);
+    } else {
+      console.log('Prodotto non trovato nel carrello');
+    }
   };
-  // const handleAdd = product => {
-  //   addToCart(product);
+
+  // const removeFromCart = () => {
+  //   console.log('hai rimosso:', data.name);
+  //   const updateCart = cart.filter(item => item.id !== data.id);
+  //   setCart(updateCart);
   // };
+  // const removeFromCart = () => {
+  //   if (cart.findIndex(item => item.id !== data.id)) {
+  //     setCart([...cart]);
+  //     console.log('hai rimosso:', data.name, id);
+  //   } else {
+  //     console.log('Carrello vuoto');
+  //     setCart([]);
+  //   }
+  // };
+  // ---- STOP ----
+  // handleAddToCart
+  // const handleAdd = product => {
+  //   console.log('handleAdd:', product);
+  //   // if (!product || !product.qty) {
+  //   //   product = { ...product, qty: 1 };
+  //   // }
+  //   addToCart(product.id);
+  // };
+
+  // const handleRemove = productId => {
+  //   if (!productId || !productId.qty) {
+  //     productId = { ...productId, qty: 1 };
+  //   }
+  //   removeFromCart(productId);
+  //   console.log(`Hai rimosso: ${name}`);
+  // };
+
+  // const handleRemoveQty = product => {
+  //   removeFromCart(product);
+  // };
+
   // const [selected, setSelected] = useState(null);
   // const handleProductClick = () => {
   //   setSelected(prev => (prev === name ? 'All' : name)); // Imposta il prodotto selezionato quando viene cliccato
@@ -47,11 +102,19 @@ const SushiProducts = ({
       <p>{description}</p>
       <p>Prezzo: {price}</p>
       <div className="d-flex gap-3">
-        {/* onClick={() => onRemove({ id, name })} */}
-        <button onClick={() => handleRemove(product)} className="btn tomato">
+        {/* <button
+          onClick={() => {
+            handleRemoveQty(product);
+          }}
+          className="btn tomato"
+        >
+          -
+        </button> */}
+        <button onClick={removeFromCart} className="btn tomato">
           -
         </button>
-        <button onClick={() => handleAdd(product)} className="btn tomato">
+        {/* <button onClick={() => handleAdd(product)} className="btn tomato"> */}
+        <button onClick={addToCart} className="btn tomato">
           +
         </button>
       </div>
