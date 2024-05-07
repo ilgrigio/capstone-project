@@ -10,7 +10,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
   const handleLinkClick = () => {
     setTimeout(() => {
       // Effettua la navigazione qui
-    }, 10000); // Imposta il timeout a 3 secondi (3000 millisecondi)
+    }, 3000); // Imposta il timeout a 3 secondi (3000 millisecondi)
   };
 
   return (
@@ -23,7 +23,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
             <div
               onClick={() => {
                 setSelectedCategory(item.name);
-                setCategory(prev => (prev === item.name ? 'All' : item.name));
+                setCategory((prev) => (prev === item.name ? 'All' : item.name));
               }}
               key={idx}
               className="category col m-3"

@@ -13,6 +13,8 @@ const SushiProducts = ({
   data,
 }) => {
   const { cart, setCart } = useCart();
+
+  // Function addToCart
   const addToCart = () => {
     console.log('hai aggiunto:', data.name, id);
     if (Array.isArray(cart)) {
@@ -22,18 +24,20 @@ const SushiProducts = ({
     }
   };
 
+  // Function removeFromCart
   const removeFromCart = () => {
     const updatedCart = [...cart]; // Crea una copia del carrello
-    const productToRemove = updatedCart.find(item => item.id === data.id);
+    const index = updatedCart.findIndex((item) => item.id === data.id); // Trova l'indice del prodotto
 
-    if (productToRemove) {
+    if (index !== -1) {
       // Se il prodotto è presente nel carrello
+      const productToRemove = updatedCart[index];
       if (productToRemove.quantity > 1) {
         // Se la quantità è maggiore di 1, sottrai 1
         productToRemove.quantity -= 1;
       } else {
         // Altrimenti, rimuovi completamente il prodotto
-        updatedCart.splice(productToRemove, 1);
+        updatedCart.splice(index, 1);
       }
       setCart(updatedCart);
       console.log('Prodotto rimosso:', productToRemove.name);
@@ -53,7 +57,7 @@ const SushiProducts = ({
       <p>{description}</p>
       <p>Prezzo: {price}</p>
       <div className="d-flex gap-3">
-        <button onClick={removeFromCart} className="btn tomato">
+        <button onClick={() => removeFromCart(data.id)} className="btn tomato">
           -
         </button>
 

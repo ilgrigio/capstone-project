@@ -20,3 +20,18 @@
   right: 0;
   width: 500px;
 }
+
+.cart--box img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.btn--box {
+  display: grid;
+  justify-content: flex-end;
+}
+
+.side--btn {
+  background-color: tomato !important;
+  color: #fff;
+}

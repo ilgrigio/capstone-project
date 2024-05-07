@@ -7,9 +7,6 @@ const SecondDishes = () => {
   const [secondDishes, setSecondDishes] = useState([]);
   const [cart, setCart] = useState([]);
 
-  const onAdd = () => {};
-  const onRemove = () => {};
-
   const fetchDishes = async () => {
     try {
       const response = await fetch(
@@ -28,10 +25,10 @@ const SecondDishes = () => {
   useEffect(() => {
     fetchDishes();
   }, []);
-
+  console.log('lunghezza cart:', cart.length);
   return (
     <>
-      <Navbar countCartItems={cart.length} />
+      <Navbar countCart={cart.length} />
       <div className="container-fluid">
         <div className="row gy-4">
           {secondDishes.map((item, idx) => {
@@ -45,16 +42,7 @@ const SecondDishes = () => {
                   price={item.price.$numberDecimal}
                   photo={item.photo}
                   qty={item.qty}
-                  // countCartItems={item.amount}
                 />
-                <div className="quantity-controls">
-                  <button onClick={() => onRemove(item)} className="btn">
-                    -
-                  </button>
-                  <button onClick={() => onAdd(item)} className="btn">
-                    +
-                  </button>
-                </div>
               </div>
             );
           })}
