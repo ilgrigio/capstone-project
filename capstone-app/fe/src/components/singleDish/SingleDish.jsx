@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { useCart } from '../../context/CartContext';
 
 const SushiProducts = ({
@@ -9,17 +9,29 @@ const SushiProducts = ({
   price,
   addedIngredients,
   photo,
-  product,
   data,
 }) => {
   const { cart, setCart } = useCart();
+  // console.log('data:', data);
 
   // Function addToCart
-  const addToCart = () => {
-    console.log('hai aggiunto:', data.name, id);
+  const addToCart = data => {
+    console.log('hai aggiunto:', data.name, data._id);
     if (Array.isArray(cart)) {
-      setCart([...cart, data]);
+      const existingProductIndex = cart.findIndex(
+        item => item._id === data._id
+      );
+      if (existingProductIndex !== -1) {
+        // Il prodotto esiste già nel carrello, quindi aggiorna solo la quantità
+        const updatedCart = [...cart];
+        updatedCart[existingProductIndex].quantity += data.quantity;
+        setCart(updatedCart);
+      } else {
+        // Il prodotto non esiste nel carrello, quindi aggiungilo
+        setCart([...cart, data]);
+      }
     } else {
+      data.quantity = 1;
       setCart([data]);
     }
   };
@@ -27,7 +39,7 @@ const SushiProducts = ({
   // Function removeFromCart
   const removeFromCart = () => {
     const updatedCart = [...cart]; // Crea una copia del carrello
-    const index = updatedCart.findIndex((item) => item.id === data.id); // Trova l'indice del prodotto
+    const index = updatedCart.findIndex(item => item._id === data._id); // Trova l'indice del prodotto
 
     if (index !== -1) {
       // Se il prodotto è presente nel carrello
@@ -57,11 +69,11 @@ const SushiProducts = ({
       <p>{description}</p>
       <p>Prezzo: {price}</p>
       <div className="d-flex gap-3">
-        <button onClick={() => removeFromCart(data.id)} className="btn tomato">
+        <button onClick={() => removeFromCart(data)} className="btn tomato">
           -
         </button>
 
-        <button onClick={addToCart} className="btn tomato">
+        <button onClick={() => addToCart(data)} className="btn tomato">
           +
         </button>
       </div>

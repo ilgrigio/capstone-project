@@ -22,6 +22,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  console.log('carrello', cart);
   return (
     <CartContext.Provider value={{ cart, setCart, isOpen, toggleSidecart }}>
       {children}

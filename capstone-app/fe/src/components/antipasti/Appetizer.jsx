@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import SushiProducts from '../singleDish/SingleDish';
 import Main from '../main/Main';
+import { useCart } from '../../context/CartContext';
 
 const Appetizer = () => {
   const [antipastiDishes, setAntipastiDishes] = useState([]);
-  const [cart, setCart] = useState([]);
+  const { cart } = useCart();
 
   const fetchDishes = async () => {
     try {
@@ -24,10 +25,10 @@ const Appetizer = () => {
   useEffect(() => {
     fetchDishes();
   }, []);
-
+  // console.log('Numero prodotti:', cart);
   return (
     <>
-      <Main countCartItems={cart.length} />
+      <Main countCart={cart.length} />
       <div className="container-fluid">
         <div className="row gy-3">
           {antipastiDishes.map((item, idx) => {
@@ -40,7 +41,6 @@ const Appetizer = () => {
                   description={item.description}
                   price={item.price.$numberDecimal}
                   photo={item.photo}
-                  qty={item.qty}
                 />
               </div>
             );
