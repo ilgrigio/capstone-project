@@ -23,7 +23,7 @@ const ExplorerMenu = ({ category, setCategory }) => {
             <div
               onClick={() => {
                 setSelectedCategory(item.name);
-                setCategory((prev) => (prev === item.name ? 'All' : item.name));
+                setCategory(prev => (prev === item.name ? 'All' : item.name));
               }}
               key={idx}
               className="category col m-3"

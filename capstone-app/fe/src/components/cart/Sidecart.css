@@ -22,6 +22,8 @@
 .cart--box {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  height: 300px
 }
 
 
@@ -75,4 +77,10 @@
   align-items: center;
   justify-content: space-between;
   width: 35%;
+}
+
+.sidebar--footer {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
 }
