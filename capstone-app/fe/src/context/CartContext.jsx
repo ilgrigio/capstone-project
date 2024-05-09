@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidecart = () => {
-    setIsOpen(prevIsOpen => !prevIsOpen);
+    setIsOpen((prevIsOpen) => !prevIsOpen);
     // setIsOpen(!isOpen);
   };
 

@@ -16,16 +16,15 @@
 }
 
 .sidebar--open {
-  right:0;
+  right: 0;
 }
 
 .cart--box {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 300px
+  height: 50%;
 }
-
 
 .card--field {
   display: flex;
@@ -48,13 +47,13 @@
 
 .side--btn {
   background-color: tomato !important;
-  border:none;
+  border: none;
 }
 
 .side--btn:hover {
-  background-color: transparent!important;
-  color: #212529!important;
-  border: 2px solid tomato!important;
+  background-color: transparent !important;
+  color: #212529 !important;
+  border: 2px solid tomato !important;
 }
 
 .name--description {
@@ -62,7 +61,8 @@
   width: 20%;
 }
 
-.name--description h4, .name--description p {
+.name--description h4,
+.name--description p {
   margin: 0;
 }
 
@@ -83,4 +83,5 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
+  margin-top: 10px;
 }

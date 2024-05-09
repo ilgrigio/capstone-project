@@ -8,43 +8,58 @@ const Sidecart = () => {
   const [quantities, setQuantities] = useState(0);
 
   // Rimuovi Prodotto
-  const deleteDish = product => {
+  const deleteDish = (product) => {
     console.log('dish?', product);
-    const arr = cart.filter(item => item._id !== product._id);
-    setCart(arr);
+    const arr = cart.filter((item) => item._id !== product._id);
+    setCart([]);
     console.log('setCart', setCart(arr));
     deleteDish();
   };
 
   // Aumenta la quantità
-  const increaseQuantity = product => {
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [product._id]: (prevQuantities[product._id] || 0) + 1,
-    }));
+  const increaseQuantity = (product) => {
+    setQuantities((prevQuantities) => {
+      const newQuantities = {
+        ...prevQuantities,
+        [product._id]: (prevQuantities[product._id] || 0) + 1,
+      };
+      getTotalPrice(newQuantities); // Aggiorna il prezzo totale con le nuove quantità
+      return newQuantities;
+    });
   };
-  // console.log('prodotto +', product);
 
   // Decrementa la quantità
-  const decreaseQuantity = product => {
-    console.log('hai tolto una porzione di:', product.name);
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [product._id]: Math.max(prevQuantities[product._id] - 1, 0),
-    }));
+  const decreaseQuantity = (product) => {
+    setQuantities((prevQuantities) => {
+      const newQuantities = {
+        ...prevQuantities,
+        [product._id]: Math.max((prevQuantities[product._id] || 0) - 1, 0),
+      };
+      getTotalPrice(); // Aggiorna il prezzo totale con le nuove quantità
+      return newQuantities;
+    });
   };
+
+  // const decreaseQuantity = (product) => {
+  //   console.log('hai tolto una porzione di:', product.name);
+  //   setQuantities((prevQuantities) => ({
+  //     ...prevQuantities,
+  //     [product._id]: Math.max(prevQuantities[product._id] - 1, 0),
+  //   }));
+  // };
   // Prezzo totale
-  const getTotalPrice = product => {
+  const getTotalPrice = () => {
     let updatedPrice = 0;
-    cart.map((item, index) => {
-      const quantity = quantities[index] || 1;
-      if (product) {
-        console.log('p', product);
-        item.price = product.price; // Se non è fornita una quantità, impostala a 1
-        updatedPrice += quantity * item.price;
+    cart.forEach((item) => {
+      const quantity = quantities[item._id] || 1; // usa quantities dallo stato
+      const price = Number(item.price.$numberDecimal);
+      if (!isNaN(price)) {
+        updatedPrice += quantity * price;
+      } else {
+        console.log('Invalid price for item:', item);
       }
     });
-    console.log('QTY:', quantities);
+    console.log('PRICE:', updatedPrice);
     setPrice(updatedPrice);
   };
 
@@ -68,13 +83,13 @@ const Sidecart = () => {
         {isOpen
           ? cart.map((product, idx) => (
               <div key={idx} className="card--field">
-                {/* <span>{product._id}</span> */}
                 <img src={product.photo} alt={product.name} />
                 <div className="name--description">
                   <h4>{product.name}</h4>
                   {/* <p>{product.description}</p> */}
                   <p>€{product.price.$numberDecimal}</p>
                 </div>
+
                 <div className="wrap--button">
                   <div className="box--button">
                     <button
@@ -84,7 +99,9 @@ const Sidecart = () => {
                       -
                     </button>
                     <p className="m-0">
-                      {quantities ? quantities[product._id] : 0}
+                      {quantities && quantities[product._id]
+                        ? quantities[product._id]
+                        : 0}
                     </p>
                     <button
                       onClick={() => increaseQuantity(product)}
