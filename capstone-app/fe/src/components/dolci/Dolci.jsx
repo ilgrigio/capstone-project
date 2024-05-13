@@ -28,7 +28,7 @@ const Dolci = () => {
 
   return (
     <>
-      <Main countCartItems={cart.length} />
+      <Main countCart={cart.length} />
       <div className="container-fluid">
         <div className="row gy-4">
           {dessert.map((item, idx) => {

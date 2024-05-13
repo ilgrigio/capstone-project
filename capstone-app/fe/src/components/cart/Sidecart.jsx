@@ -7,18 +7,18 @@ const Sidecart = () => {
   const { isOpen, toggleSidecart, cart, setCart } = useCart();
   const [quantities, setQuantities] = useState(0);
 
+  console.log('Product:?', cart);
+
   // Rimuovi Prodotto
-  const deleteDish = (product) => {
-    console.log('dish?', product);
-    const arr = cart.filter((item) => item._id !== product._id);
-    setCart([]);
-    console.log('setCart', setCart(arr));
-    deleteDish();
+  const deleteDish = deletingDish => {
+    console.log('hai rimosso:', deletingDish.name, deletingDish._id);
+    const newDish = cart.filter(product => product !== deletingDish);
+    setCart(newDish);
   };
 
   // Aumenta la quantità
-  const increaseQuantity = (product) => {
-    setQuantities((prevQuantities) => {
+  const increaseQuantity = product => {
+    setQuantities(prevQuantities => {
       const newQuantities = {
         ...prevQuantities,
         [product._id]: (prevQuantities[product._id] || 0) + 1,
@@ -29,8 +29,8 @@ const Sidecart = () => {
   };
 
   // Decrementa la quantità
-  const decreaseQuantity = (product) => {
-    setQuantities((prevQuantities) => {
+  const decreaseQuantity = product => {
+    setQuantities(prevQuantities => {
       const newQuantities = {
         ...prevQuantities,
         [product._id]: Math.max((prevQuantities[product._id] || 0) - 1, 0),
@@ -40,17 +40,10 @@ const Sidecart = () => {
     });
   };
 
-  // const decreaseQuantity = (product) => {
-  //   console.log('hai tolto una porzione di:', product.name);
-  //   setQuantities((prevQuantities) => ({
-  //     ...prevQuantities,
-  //     [product._id]: Math.max(prevQuantities[product._id] - 1, 0),
-  //   }));
-  // };
   // Prezzo totale
   const getTotalPrice = () => {
     let updatedPrice = 0;
-    cart.forEach((item) => {
+    cart.forEach(item => {
       const quantity = quantities[item._id] || 1; // usa quantities dallo stato
       const price = Number(item.price.$numberDecimal);
       if (!isNaN(price)) {
@@ -110,7 +103,12 @@ const Sidecart = () => {
                       +
                     </button>
                   </div>
-                  <button className="btn tomato">{deleteDish}Elimina</button>
+                  <button
+                    className="btn tomato"
+                    onClick={() => deleteDish(product)}
+                  >
+                    Elimina
+                  </button>
                 </div>
               </div>
             ))

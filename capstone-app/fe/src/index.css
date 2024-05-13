@@ -84,3 +84,20 @@ img {
 .btn.tomato:hover {
   background-color: #cfca64;
 }
+
+/* Scrollbar */
+/* Questo si applica a tutto il documento */
+*::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 50px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #cfca64;
+  border-radius: 50px;
+}

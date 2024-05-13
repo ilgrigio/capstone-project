@@ -14,17 +14,17 @@ const SushiProducts = ({
   const { cart, setCart } = useCart();
 
   // Function addToCart
-  const addToCart = (data) => {
+  const addToCart = data => {
     console.log('hai aggiunto:', data.name, data._id);
     if (Array.isArray(cart)) {
       const existingProductIndex = cart.findIndex(
-        (item) => item._id === data._id
+        item => item.id === data._id,
+        console.log('itemId:', data._id)
       );
       if (existingProductIndex !== -1) {
         // Il prodotto esiste già nel carrello, quindi aggiorna solo la quantità
         const updatedCart = [...cart];
         updatedCart[existingProductIndex].quantity += 1; // Aggiungi sempre 1 alla quantità esistente
-        // updatedCart[existingProductIndex].quantity += data.quantity;
         setCart(updatedCart);
       } else {
         data.quantity = 1; // Imposta la quantità a 1 per i nuovi prodotti
@@ -40,7 +40,7 @@ const SushiProducts = ({
   // Function removeFromCart
   const removeFromCart = () => {
     const updatedCart = [...cart]; // Crea una copia del carrello
-    const index = updatedCart.findIndex((item) => item._id === data._id); // Trova l'indice del prodotto
+    const index = updatedCart.findIndex(item => item._id === data._id); // Trova l'indice del prodotto
 
     if (index !== -1) {
       // Se il prodotto è presente nel carrello
@@ -74,7 +74,7 @@ const SushiProducts = ({
           -
         </button>
 
-        <button onClick={() => addToCart(data)} className="btn tomato">
+        <button onClick={() => addToCart(data, id)} className="btn tomato">
           +
         </button>
       </div>

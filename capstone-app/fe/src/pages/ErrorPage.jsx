@@ -9,7 +9,7 @@ const Errorpage = () => {
       <MdError size={50} />
       <h5 className="mt-4">
         Ritorna alla
-        <Link to={'/home'} className="bg-danger ms-2 p-1 rounded-3">
+        <Link to={'/'} className="bg-danger ms-2 p-1 rounded-3">
           {' '}
           Home{' '}
         </Link>

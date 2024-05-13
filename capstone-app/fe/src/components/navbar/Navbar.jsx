@@ -20,7 +20,7 @@ const Navbar = () => {
             Sushi Restaurant
           </span>
           <div className="d-flex gap-3">
-            <Link to={'/home'} className="text-light fw-bolder underline">
+            <Link to={'/'} className="text-light fw-bolder underline">
               Home
             </Link>
             <Link

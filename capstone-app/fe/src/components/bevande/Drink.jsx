@@ -1,11 +1,12 @@
 import React from 'react';
 import SushiProducts from '../singleDish/SingleDish';
-import Navbar from '../navbar/Navbar';
+import Main from '../main/Main';
 import { useState, useEffect } from 'react';
+import { useCart } from '../../context/CartContext';
 
 const Drink = () => {
   const [drink, setDrink] = useState([]);
-  const [cart, setCart] = useState([]);
+  const { cart } = useCart();
 
   const fetchDishes = async () => {
     try {
@@ -28,7 +29,7 @@ const Drink = () => {
 
   return (
     <>
-      <Navbar countCartItems={cart.length} />
+      <Main countCart={cart.length} />
       <div className="container-fluid">
         <div className="row g-3">
           <h1>Guarda il nostro Menu</h1>

@@ -39,7 +39,7 @@ const LoginForm = () => {
         localStorage.setItem('auth', JSON.stringify(data.token));
         setTimeout(() => {
           setLoading(false);
-          navigate('/home');
+          navigate('/');
         }, 1500);
       }
     } catch (error) {

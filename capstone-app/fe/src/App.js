@@ -24,7 +24,7 @@ const App = () => {
       <Route path="/secondi" element={<Secondi />} />
       <Route path="/spinner" element={<LoadingSpinner />} />
       <Route exact path="/login" element={<Login />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="*" element={<Errorpage />} />
       <Route path="/signup" element={<Signup />} />
     </Routes>
