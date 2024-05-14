@@ -35,7 +35,7 @@ img {
 
 .card {
   color: #212529!important;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .card h2, p {

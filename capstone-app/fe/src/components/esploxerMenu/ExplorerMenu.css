@@ -6,6 +6,17 @@
   text-align: center;
 }
 
+.container--explorer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.row.pt-3 {
+  max-width: 80%;
+}
+
 .col img {
   width: 9rem;
   height: 9rem;

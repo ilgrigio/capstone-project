@@ -2,9 +2,8 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
   height: 100%;
-  background: #f1f1f1;
+  background: #e9ecef;
   transition: right 0.5s;
   padding: 20px;
   box-sizing: border-box;
@@ -23,24 +22,27 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 80%;
+  height: 75%;
   scrollbar-width: thin;
-  /* scrollbar-color: #ccc #333; */
+  padding-inline: 5px;
 }
 
 .card--field {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   margin-block: 10px;
   border-bottom: 1px solid black;
   padding-bottom: 10px;
+  gap: 5px;
 }
 
 .cart--box img {
-  width: 20%;
-  height: auto;
+  width:80px;
+  height:80px;
   object-fit: cover;
+  border-radius: 100px;
+  margin-inline-end: 1rem;
 }
 .btn--box {
   display: flex;
@@ -48,42 +50,95 @@
 }
 
 .side--btn {
-  background-color: tomato !important;
+  background-color: #cfca64 !important;
   border: none;
+  text-shadow: 1px 1px 1px #212529;
 }
 
 .side--btn:hover {
   background-color: transparent !important;
-  color: #212529 !important;
-  border: 2px solid tomato !important;
+  background-color: #212529 !important;
+  color: #cfca64!important;
+  text-shadow: none;
 }
 
 .name--description {
   margin: 0;
-  width: 20%;
+  width: 30%;
 }
 
-.name--description h4,
+.name--description h5,
 .name--description p {
   margin: 0;
 }
 
 .box--button {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
 .wrap--button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 35%;
+  width: 40%;
 }
 
 .sidebar--footer {
+ min-width: 55%;
+  font-size: large;
   display: flex;
   justify-content: space-between;
   position: sticky;
   margin-top: 10px;
+  background-color: #cfca64;
+  padding: 5px;
+}
+
+.delete--item {
+  color: #212529!important;
+}
+.delete--item:hover {
+ color: tomato !important;
+ cursor: pointer;
+}
+
+.close--sidebar {
+  cursor: pointer;
+}
+
+.close--sidebar:hover {
+  fill: tomato;
+  transform: rotate(180deg);
+}
+
+.clear--btn {
+  background-color: #212529;
+  color: #cfca64;
+}
+
+.clear--btn:hover {
+  background-color: transparent;
+  border: 1px solid tomato;
+  color: tomato;
+}
+
+.final--btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #0029f6;
+  color: #fff;
+}
+
+.payment:hover {
+  background-color: transparent;
+  border: 1px solid #0029f6;
 }

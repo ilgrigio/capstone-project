@@ -1,13 +1,11 @@
 import React from 'react';
 import './Footer.css';
-// import logo from '../../assets/koya-logo.png';
 
 const Footer = () => {
   return (
     <div className="footer bg-dark">
-      <h2>Koya Sushi Asian Restaurant</h2>
-      {/* <img src={logo} className="logo" /> */}
-      <span>Per prenotazioni chiamare il numero: +39 011 19 23 44 25</span>
+      <h2>Sushi Asian Restaurant</h2>
+      <span>Per prenotazioni chiamare il numero: +39 011 xxxxxx</span>
     </div>
   );
 };

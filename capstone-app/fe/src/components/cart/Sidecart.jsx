@@ -1,64 +1,24 @@
-import { React, useEffect, useState } from 'react';
+import { React } from 'react';
+import { useCart } from 'react-use-cart';
+import { useCartContext } from '../../context/CartContext';
 import './Sidecart.css';
-import { useCart } from '../../context/CartContext';
+import { IoClose } from 'react-icons/io5';
+import { TbLayoutSidebarLeftCollapseFilled } from 'react-icons/tb';
+import { MdOutlinePayment } from 'react-icons/md';
 
 const Sidecart = () => {
-  const [price, setPrice] = useState(0);
-  const { isOpen, toggleSidecart, cart, setCart } = useCart();
-  const [quantities, setQuantities] = useState(0);
-
-  console.log('Product:?', cart);
-
-  // Rimuovi Prodotto
-  const deleteDish = deletingDish => {
-    console.log('hai rimosso:', deletingDish.name, deletingDish._id);
-    const newDish = cart.filter(product => product !== deletingDish);
-    setCart(newDish);
-  };
-
-  // Aumenta la quantità
-  const increaseQuantity = product => {
-    setQuantities(prevQuantities => {
-      const newQuantities = {
-        ...prevQuantities,
-        [product._id]: (prevQuantities[product._id] || 0) + 1,
-      };
-      getTotalPrice(newQuantities); // Aggiorna il prezzo totale con le nuove quantità
-      return newQuantities;
-    });
-  };
-
-  // Decrementa la quantità
-  const decreaseQuantity = product => {
-    setQuantities(prevQuantities => {
-      const newQuantities = {
-        ...prevQuantities,
-        [product._id]: Math.max((prevQuantities[product._id] || 0) - 1, 0),
-      };
-      getTotalPrice(); // Aggiorna il prezzo totale con le nuove quantità
-      return newQuantities;
-    });
-  };
-
-  // Prezzo totale
-  const getTotalPrice = () => {
-    let updatedPrice = 0;
-    cart.forEach(item => {
-      const quantity = quantities[item._id] || 1; // usa quantities dallo stato
-      const price = Number(item.price.$numberDecimal);
-      if (!isNaN(price)) {
-        updatedPrice += quantity * price;
-      } else {
-        console.log('Invalid price for item:', item);
-      }
-    });
-    console.log('PRICE:', updatedPrice);
-    setPrice(updatedPrice);
-  };
-
-  useEffect(() => {
-    getTotalPrice();
-  }, [cart, quantities]);
+  // Open e Close Sidebar
+  const { isOpen, toggleSidecart } = useCartContext();
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    totalItems,
+    cartTotal,
+    updateItemQuantity,
+    removeItem,
+    emptyCart,
+  } = useCart();
 
   return (
     <div
@@ -67,59 +27,81 @@ const Sidecart = () => {
       } col-12 col-md-6 col-sm-12`}
     >
       <div className="btn--box">
-        <button className="btn side--btn text-light" onClick={toggleSidecart}>
-          Chiudi
-        </button>
+        <TbLayoutSidebarLeftCollapseFilled
+          onClick={toggleSidecart}
+          className="close--sidebar"
+          size={30}
+        />
       </div>
       <div className="cart--box">
         <h2 className="self--end my-4">Il tuo Carrello</h2>
+        {isEmpty && <h3 className="text-center">per ora è vuoto</h3>}
         {isOpen
-          ? cart.map((product, idx) => (
+          ? items.map((item, idx) => (
               <div key={idx} className="card--field">
-                <img src={product.photo} alt={product.name} />
+                <img src={item.photo} alt={item.name} />
                 <div className="name--description">
-                  <h4>{product.name}</h4>
-                  {/* <p>{product.description}</p> */}
-                  <p>€{product.price.$numberDecimal}</p>
+                  <h5>{item.name}</h5>
+                  <p>€{item.price}</p>
                 </div>
-
                 <div className="wrap--button">
                   <div className="box--button">
                     <button
-                      onClick={() => decreaseQuantity(product)}
+                      onClick={() =>
+                        updateItemQuantity(item.id, item.quantity - 1)
+                      }
                       className="btn tomato"
                     >
                       -
                     </button>
-                    <p className="m-0">
-                      {quantities && quantities[product._id]
-                        ? quantities[product._id]
-                        : 0}
-                    </p>
+                    <p className="m-0">{item.quantity}</p>
                     <button
-                      onClick={() => increaseQuantity(product)}
+                      onClick={() =>
+                        updateItemQuantity(item.id, item.quantity + 1)
+                      }
                       className="btn tomato"
                     >
                       +
                     </button>
                   </div>
-                  <button
-                    className="btn tomato"
-                    onClick={() => deleteDish(product)}
-                  >
-                    Elimina
-                  </button>
+
+                  <IoClose
+                    className="delete--item"
+                    size={22}
+                    onClick={() => removeItem(item.id)}
+                    style={{ boxShadow: '-moz-initial' }}
+                  />
                 </div>
               </div>
             ))
           : null}
       </div>
-      <div className="sidebar--footer">
+      <div className="final--btn">
+        <button onClick={() => emptyCart()} className="btn clear--btn">
+          Svuota carrello
+        </button>
+        <button className="btn payment">
+          <MdOutlinePayment />
+          Pay now
+        </button>
+      </div>
+      <div className="sidebar--footer btn">
         <span>Totale ordine:</span>
-        <span>{price}</span>
+        <span style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+          € {cartTotal}
+        </span>
       </div>
     </div>
+
+    /* <section className="py-4">
+          <div className="row">
+            <div className="col">
+              <h5>
+                Cart({totalUniqueItems}) total Items: ({totalItems})
+              </h5>
+            </div>
+          </div>
+        </section> */
   );
 };
-
 export default Sidecart;

@@ -1,85 +1,34 @@
-import { React, useEffect } from 'react';
-import { useCart } from '../../context/CartContext';
+import { React } from 'react';
+import { useCart } from 'react-use-cart';
 
-const SushiProducts = ({
-  id,
-  name,
-  description,
-  category,
-  price,
-  addedIngredients,
-  photo,
-  data,
-}) => {
-  const { cart, setCart } = useCart();
-
-  // Function addToCart
-  const addToCart = data => {
-    console.log('hai aggiunto:', data.name, data._id);
-    if (Array.isArray(cart)) {
-      const existingProductIndex = cart.findIndex(
-        item => item.id === data._id,
-        console.log('itemId:', data._id)
-      );
-      if (existingProductIndex !== -1) {
-        // Il prodotto esiste già nel carrello, quindi aggiorna solo la quantità
-        const updatedCart = [...cart];
-        updatedCart[existingProductIndex].quantity += 1; // Aggiungi sempre 1 alla quantità esistente
-        setCart(updatedCart);
-      } else {
-        data.quantity = 1; // Imposta la quantità a 1 per i nuovi prodotti
-        // Il prodotto non esiste nel carrello, quindi aggiungilo
-        setCart([...cart, data]);
-      }
-    } else {
-      data.quantity = 1;
-      setCart([data]);
-    }
-  };
-
-  // Function removeFromCart
-  const removeFromCart = () => {
-    const updatedCart = [...cart]; // Crea una copia del carrello
-    const index = updatedCart.findIndex(item => item._id === data._id); // Trova l'indice del prodotto
-
-    if (index !== -1) {
-      // Se il prodotto è presente nel carrello
-      const productToRemove = updatedCart[index];
-      if (productToRemove.quantity > 1) {
-        // Se la quantità è maggiore di 1, sottrai 1
-        productToRemove.quantity -= 1;
-      } else {
-        // Altrimenti, rimuovi completamente il prodotto
-        updatedCart.splice(index, 1);
-      }
-      setCart(updatedCart);
-      console.log('Prodotto rimosso:', productToRemove.name);
-    } else {
-      console.log('Prodotto non trovato nel carrello');
-    }
-  };
-
+const Itemcard = props => {
+  const { addItem } = useCart();
   return (
     <div
       className={'card align-items-center p-2'}
       style={{ minHeight: '100%' }}
     >
-      <img src={photo} alt={name} />
-      <p>{id}</p>
-      <h2>{name}</h2>
-      <p>{description}</p>
-      <p>Prezzo: {price}</p>
+      <img src={props.photo} alt={props.name} />
+      <h2>{props.name}</h2>
+      <p>{props.description}</p>
+      <p>Prezzo:€ {props.price}</p>
       <div className="d-flex gap-3">
-        <button onClick={() => removeFromCart(data)} className="btn tomato">
-          -
-        </button>
-
-        <button onClick={() => addToCart(data, id)} className="btn tomato">
-          +
+        <button
+          onClick={() =>
+            addItem({
+              id: props.id,
+              name: props.name,
+              price: props.price,
+              photo: props.photo,
+            })
+          }
+          className="btn tomato"
+        >
+          Add to cart
         </button>
       </div>
     </div>
   );
 };
 
-export default SushiProducts;
+export default Itemcard;

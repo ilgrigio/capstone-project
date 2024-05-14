@@ -3,7 +3,7 @@ import '../components/cart/Sidecart.css';
 
 const CartContext = createContext();
 
-export const useCart = () => useContext(CartContext);
+export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(
@@ -15,14 +15,12 @@ export const CartProvider = ({ children }) => {
 
   const toggleSidecart = () => {
     setIsOpen(prevIsOpen => !prevIsOpen);
-    // setIsOpen(!isOpen);
   };
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  console.log('carrello', cart);
   return (
     <CartContext.Provider value={{ cart, setCart, isOpen, toggleSidecart }}>
       {children}

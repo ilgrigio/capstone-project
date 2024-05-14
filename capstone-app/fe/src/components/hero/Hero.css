@@ -1,6 +1,25 @@
+.container--hero {
+  overflow: hidden;
+}
+
 .hero {
   filter: grayscale(10%);
   margin-block-end: 2rem;
+  height: 500px;
+  object-fit: cover;
+  animation: zoom 10s infinite, fade 10s infinite;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .button {
