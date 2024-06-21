@@ -50,7 +50,7 @@ userRoute.post('/addUser', loginLimiter, async (req, res) => {
 });
 
 // DELETE
-userRoute.delete('/deleteUser/:id', async (req, res) => {
+userRoute.delete('/deleteUser/:id', loginLimiter, async (req, res) => {
   const { id } = req.params;
   try {
     const user = await userModel.findByIdAndDelete(id);
