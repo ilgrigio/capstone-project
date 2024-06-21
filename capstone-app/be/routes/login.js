@@ -16,13 +16,14 @@ const loginLimiter = rateLimit({
 login.post('/login', loginLimiter, async (req, res) => {
   try {
     const user = await userModel.findOne({
-      email: req.body.email,
+      email: { $eq: req.body.email },
     });
     if (!user) {
       res.status(404).send({
         statusCode: 404,
         message: 'User does not exists',
       });
+      return;
     }
     const isPasswordValid = await bcrypt.compare(
       req.body.password,
