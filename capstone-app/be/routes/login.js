@@ -3,9 +3,17 @@ const login = express.Router();
 const userModel = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const rateLimit = require('express-rate-limit');
+
+// Rate Limit
+const loginLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 5, // Massimo 5 richieste per minuto
+  message: 'Too many requests, please try again later.',
+});
 
 // Login POST
-login.post('/login', async (req, res) => {
+login.post('/login', loginLimiter, async (req, res) => {
   try {
     const user = await userModel.findOne({
       email: req.body.email,
