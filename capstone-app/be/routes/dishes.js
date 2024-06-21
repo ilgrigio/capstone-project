@@ -1,9 +1,17 @@
 const express = require('express');
 const dishModel = require('../models/dishes');
 const dishRoute = express.Router();
+const rateLimit = require('express-rate-limit');
+
+// Rate Limit
+const loginLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 5, // Massimo 5 richieste per minuto
+  message: 'Too many requests, please try again later.',
+});
 
 // GET
-dishRoute.get('/dishes', async (req, res) => {
+dishRoute.get('/dishes', loginLimiter, async (req, res) => {
   const { page = 1, pageSize = 10 } = req.query;
   try {
     const dishes = await dishModel
@@ -30,7 +38,7 @@ dishRoute.get('/dishes', async (req, res) => {
 
 // GET CATEGORY
 // ANTIPASTI
-dishRoute.get('/dishes/antipasti', async (req, res) => {
+dishRoute.get('/dishes/antipasti', loginLimiter, async (req, res) => {
   const antipasti = await dishModel.find({ category: 'antipasti' });
   res.status(200).send({
     statusCode: 200,
@@ -39,7 +47,7 @@ dishRoute.get('/dishes/antipasti', async (req, res) => {
 });
 
 // PRIMI
-dishRoute.get('/dishes/primi', async (req, res) => {
+dishRoute.get('/dishes/primi', loginLimiter, async (req, res) => {
   const primi = await dishModel.find({ category: 'primi' });
   res.status(200).send({
     statusCode: 200,
@@ -48,7 +56,7 @@ dishRoute.get('/dishes/primi', async (req, res) => {
 });
 
 // SECONDI
-dishRoute.get('/dishes/secondi', async (req, res) => {
+dishRoute.get('/dishes/secondi', loginLimiter, async (req, res) => {
   const secondi = await dishModel.find({ category: 'secondi' });
   res.status(200).send({
     statusCode: 200,
@@ -57,7 +65,7 @@ dishRoute.get('/dishes/secondi', async (req, res) => {
 });
 
 // DESSERT
-dishRoute.get('/dishes/dessert', async (req, res) => {
+dishRoute.get('/dishes/dessert', loginLimiter, async (req, res) => {
   const dessert = await dishModel.find({ category: 'dessert' });
   res.status(200).send({
     statusCode: 200,
@@ -66,7 +74,7 @@ dishRoute.get('/dishes/dessert', async (req, res) => {
 });
 
 // DRINK
-dishRoute.get('/dishes/drink', async (req, res) => {
+dishRoute.get('/dishes/drink', loginLimiter, async (req, res) => {
   const drink = await dishModel.find({ category: 'drink' });
   res.status(200).send({
     statusCode: 200,
@@ -76,7 +84,7 @@ dishRoute.get('/dishes/drink', async (req, res) => {
 /* ----- FINISH CATEGORY ----- */
 
 // POST
-dishRoute.post('/addDish', async (req, res) => {
+dishRoute.post('/addDish', loginLimiter, async (req, res) => {
   const newDish = new dishModel({
     name: req.body.name,
     description: req.body.description,

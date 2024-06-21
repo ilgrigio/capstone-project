@@ -2,9 +2,17 @@ const express = require('express');
 const userRoute = express.Router();
 const userModel = require('../models/users');
 const bcrypt = require('bcrypt');
+const rateLimit = require('express-rate-limit');
+
+// Rate Limit
+const loginLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 5, // Massimo 5 richieste per minuto
+  message: 'Too many requests, please try again later.',
+});
 
 // GET
-userRoute.get('/users', async (req, res) => {
+userRoute.get('/users', loginLimiter, async (req, res) => {
   try {
     const users = await userModel.find();
     res.status(200).send(users);
@@ -17,7 +25,7 @@ userRoute.get('/users', async (req, res) => {
 });
 
 // POST
-userRoute.post('/addUser', async (req, res) => {
+userRoute.post('/addUser', loginLimiter, async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const newUser = new userModel({
